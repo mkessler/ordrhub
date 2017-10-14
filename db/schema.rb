@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014214646) do
+ActiveRecord::Schema.define(version: 20171014214828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20171014214646) do
     t.index ["organization_id", "user_id"], name: "index_memberships_on_organization_id_and_user_id", unique: true, using: :btree
     t.index ["organization_id"], name: "index_memberships_on_organization_id", using: :btree
     t.index ["user_id"], name: "index_memberships_on_user_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "restaurant_id", null: false
+    t.integer  "source_id",     null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
+    t.index ["source_id"], name: "index_orders_on_source_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -64,5 +73,7 @@ ActiveRecord::Schema.define(version: 20171014214646) do
 
   add_foreign_key "memberships", "organizations"
   add_foreign_key "memberships", "users"
+  add_foreign_key "orders", "restaurants"
+  add_foreign_key "orders", "sources"
   add_foreign_key "restaurants", "organizations"
 end

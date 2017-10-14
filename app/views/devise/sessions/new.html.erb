@@ -6,7 +6,7 @@
         Log-in to your account
       </div>
     </h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "ui large form" }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "ui large form #{'error' if resource.errors}" }) do |f| %>
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">

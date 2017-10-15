@@ -1,5 +1,3 @@
 class Restaurant < ApplicationRecord
-  belongs_to :organization
-
-  validates :organization_id, :name, presence: true
+  belongs_to :organization, optional: true
 end

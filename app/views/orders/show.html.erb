@@ -1,14 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h1 class="ui center aligned icon header">
+  <i class="circular barcode icon"></i>
+  <div class="content">
+    Order #12345
+    <div class="sub header">
+      <%= @restaurant.name %>
+    </div>
+  </div>
+</h1>
 
-<p>
-  <strong>Restaurant:</strong>
-  <%= @order.restaurant %>
-</p>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Source</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Source:</strong>
-  <%= @order.source %>
-</p>
+  <tbody>
+    <tr>
+      <td><%= @order.source.name %></td>
+    </tr>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to restaurant_orders_path(@restaurant), class: "ui labeled icon button" do %>
+  <i class="left arrow icon"></i>
+  Back
+<% end %>

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20171014214828) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.integer  "organization_id", null: false
+    t.integer  "organization_id"
     t.string   "name",            null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

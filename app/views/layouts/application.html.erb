@@ -9,19 +9,30 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <ul>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to('Login', new_user_session_path)  %>
-        </li>
-      <% end %>
-    </ul>
-    <%= yield %>
+    <div class="ui inverted menu" style="border-radius: 0;">
+      <div class="ui container">
+        <a href="/" class="header item">
+          <img class="logo" src="assets/images/logo.png">
+          <i class="inverted food icon"></i>
+          DeliveryDrop
+        </a>
+        <div class="ui right floated simple dropdown item">
+          <%= user_signed_in? ? current_user.email : 'Welcome' %>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, class: 'item', method: :delete) %>
+            <% else %>
+              <%= link_to('Login', new_user_session_path, class: 'item') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui main text container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>

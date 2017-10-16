@@ -8,16 +8,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="sticky-footer-body">
     <div class="ui inverted menu" style="border-radius: 0;">
       <div class="ui container">
         <a href="/" class="header item">
-          <img class="logo" src="assets/images/logo.png">
-          <i class="inverted food icon"></i>
+          <i class="inverted shipping large icon"></i>
           DeliveryDrop
         </a>
         <div class="ui right floated simple dropdown item">
-          <%= user_signed_in? ? current_user.email : 'Welcome' %>
+          <%= user_signed_in? ? 'Test User' : 'Welcome' %>
           <i class="dropdown icon"></i>
           <div class="menu">
             <% if user_signed_in? %>
@@ -29,10 +28,28 @@
         </div>
       </div>
     </div>
-    <div class="ui main text container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+
+    <div class="ui main text container sticky-footer-content">
+      <div class="ui teal message transition <%= 'hidden' unless notice.present? %>">
+        <i class="close icon"></i>
+        <%= notice %>
+      </div>
+      <div class="ui orange message transition <%= 'hidden' unless alert.present? %>">
+        <i class="close icon"></i>
+        <%= alert %>
+      </div>
       <%= yield %>
+    </div>
+
+    <div class="ui inverted vertical footer segment mt3">
+      <div class="ui center aligned container">
+        <div class="ui horizontal inverted small divided link list">
+          <a class="item" href="#">Site Map</a>
+          <a class="item" href="#">Contact Us</a>
+          <a class="item" href="#">Terms and Conditions</a>
+          <a class="item" href="#">Privacy Policy</a>
+        </div>
+      </div>
     </div>
   </body>
 </html>

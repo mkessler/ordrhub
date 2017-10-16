@@ -8,20 +8,52 @@
   </div>
 </h1>
 
-<table class="ui celled table">
-  <thead>
-    <tr>
-      <th>Source</th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="ui segment divided items">
+  <% @orders.each do |order| %>
+    <div class="item">
+      <div class="image">
+        <img src="https://semantic-ui.com/images/wireframe/image.png">
+      </div>
+      <div class="content">
+        <%= link_to "Order ##{order.details['number']}", restaurant_order_path(@restaurant, order), class: "header" %>
+        <div class="meta">
+          <span class="cinema">May 29, 2017 9:25 PM</span>
+        </div>
+        <div class="description">
+          <p>
+            Items: <%= order.items.count %> | Subtotal: <%= order.details['subtotal'] %>
+          </p>
+        </div>
+        <div class="extra">
+          <div class="ui buttons">
+            <button class="ui negative button">Decline</button>
+            <div class="or"></div>
+            <button class="ui positive button">Confirm</button>
+          </div>
+          <%= link_to restaurant_order_path(@restaurant, order), class: "ui right floated right labeled icon button" do %>
+            <i class="right arrow icon"></i>
+            View
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.source.name %></td>
-        <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="ui pagination menu">
+  <a class="active item">
+    1
+  </a>
+  <div class="disabled item">
+    ...
+  </div>
+  <a class="item">
+    10
+  </a>
+  <a class="item">
+    11
+  </a>
+  <a class="item">
+    12
+  </a>
+</div>

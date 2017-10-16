@@ -1,7 +1,7 @@
 <h1 class="ui center aligned icon header">
   <i class="circular barcode icon"></i>
   <div class="content">
-    Order #12345
+    Order #<%= @order.details['number'] %>
     <div class="sub header">
       <%= @restaurant.name %>
     </div>
@@ -9,20 +9,71 @@
 </h1>
 
 <table class="ui celled table">
-  <thead>
-    <tr>
-      <th>Source</th>
-    </tr>
-  </thead>
-
   <tbody>
     <tr>
-      <td><%= @order.source.name %></td>
+      <td>Customer Name</td>
+      <td><%= @order.details['customer_name'] %></td>
+    </tr>
+    <tr>
+      <td>Customer Phone</td>
+      <td><%= @order.details['customer_phone'] %></td>
+    </tr>
+    <tr>
+      <td>Delivery Date</td>
+      <td><%= @order.details['delivery_date'] %></td>
+    </tr>
+    <tr>
+      <td>Delivery Address</td>
+      <td><%= @order.details['delivery_address'] %></td>
+    </tr>
+    <tr>
+      <td>Delivery City</td>
+      <td><%= @order.details['delivery_city'] %></td>
+    </tr>
+    <tr>
+      <td>Delivery Time</td>
+      <td><%= @order.details['delivery_time'] %></td>
+    </tr>
+    <tr>
+      <td>Items</td>
+      <td>
+        <% @order.items.each do |item| %>
+          <div><%= item %></div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td><%= @order.details['total'] %></td>
+    </tr>
+    <tr>
+      <td>Tax</td>
+      <td><%= @order.details['tax'] %></td>
+    </tr>
+    <tr>
+      <td>Fee</td>
+      <td><%= @order.details['fee'] %></td>
+    </tr>
+    <tr>
+      <td>Tip</td>
+      <td><%= @order.details['tip'] %></td>
+    </tr>
+    <tr>
+      <td>Subtotal</td>
+      <td><%= @order.details['subtotal'] %></td>
     </tr>
   </tbody>
 </table>
 
-<%= link_to restaurant_orders_path(@restaurant), class: "ui labeled icon button" do %>
-  <i class="left arrow icon"></i>
-  Back
-<% end %>
+
+<div class="extra">
+  <%= link_to restaurant_orders_path(@restaurant), class: "ui labeled icon button" do %>
+    <i class="left arrow icon"></i>
+    Back
+  <% end %>
+  <div class="ui buttons right floated">
+    <button class="ui negative button">Decline</button>
+    <div class="or"></div>
+    <button class="ui positive button">Confirm</button>
+  </div>
+</div>

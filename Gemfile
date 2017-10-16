@@ -57,3 +57,9 @@ gem 'devise'
 
 # UI
 gem 'semantic-ui-sass'
+
+# Uber
+gem 'uber-ruby', require: 'uber'
+
+# Postmates
+gem 'postmates'

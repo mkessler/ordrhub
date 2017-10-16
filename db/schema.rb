@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015185525) do
+ActiveRecord::Schema.define(version: 20171016065634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "associations", force: :cascade do |t|
+    t.integer  "store_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id", "user_id"], name: "index_associations_on_store_id_and_user_id", unique: true, using: :btree
+    t.index ["store_id"], name: "index_associations_on_store_id", using: :btree
+    t.index ["user_id"], name: "index_associations_on_user_id", using: :btree
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "organization_id", null: false
@@ -27,13 +37,13 @@ ActiveRecord::Schema.define(version: 20171015185525) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "restaurant_id",              null: false
-    t.integer  "source_id",                  null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.hstore   "details",       default: {}
-    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
+    t.integer  "store_id",                null: false
+    t.integer  "source_id",               null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.hstore   "details",    default: {}
     t.index ["source_id"], name: "index_orders_on_source_id", using: :btree
+    t.index ["store_id"], name: "index_orders_on_store_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -42,18 +52,18 @@ ActiveRecord::Schema.define(version: 20171015185525) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "restaurants", force: :cascade do |t|
-    t.integer  "organization_id"
-    t.string   "name",            null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["organization_id"], name: "index_restaurants_on_organization_id", using: :btree
-  end
-
   create_table "sources", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.string   "name",            null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_stores_on_organization_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,9 +83,11 @@ ActiveRecord::Schema.define(version: 20171015185525) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "associations", "stores"
+  add_foreign_key "associations", "users"
   add_foreign_key "memberships", "organizations"
   add_foreign_key "memberships", "users"
-  add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "sources"
-  add_foreign_key "restaurants", "organizations"
+  add_foreign_key "orders", "stores"
+  add_foreign_key "stores", "organizations"
 end

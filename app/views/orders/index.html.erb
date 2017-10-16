@@ -3,7 +3,7 @@
   <div class="content">
     Orders
     <div class="sub header">
-      <%= @restaurant.name %>
+      <%= @store.name %>
     </div>
   </div>
 </h1>
@@ -15,7 +15,7 @@
         <img src="https://semantic-ui.com/images/wireframe/image.png">
       </div>
       <div class="content">
-        <%= link_to "Order ##{order.details['number']}", restaurant_order_path(@restaurant, order), class: "header" %>
+        <%= link_to "Order ##{order.details['number']}", store_order_path(@store, order), class: "header" %>
         <div class="meta">
           <span class="cinema">May 29, 2017 9:25 PM</span>
         </div>
@@ -30,7 +30,7 @@
             <div class="or"></div>
             <button class="ui positive button">Confirm</button>
           </div>
-          <%= link_to restaurant_order_path(@restaurant, order), class: "ui right floated right labeled icon button" do %>
+          <%= link_to store_order_path(@store, order), class: "ui right floated right labeled icon button" do %>
             <i class="right arrow icon"></i>
             View
           <% end %>

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurant
+  before_action :set_store
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -65,8 +65,8 @@ class OrdersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:restaurant_id])
+    def set_store
+      @store = Store.find(params[:store_id])
     end
 
     def set_order
@@ -75,6 +75,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:restaurant_id, :source_id)
+      params.require(:order).permit(:store_id, :source_id)
     end
 end

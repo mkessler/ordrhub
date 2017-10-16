@@ -2,8 +2,8 @@
 
 one:
   store: one
-  source: one
+  user: one
 
 two:
   store: two
-  source: two
+  user: two

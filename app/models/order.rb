@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
-  belongs_to :restaurant
+  belongs_to :store
   belongs_to :source
 
-  validates :restaurant_id, :source_id, presence: true
+  validates :store_id, :source_id, presence: true
 
   def items
     if self.details['items']

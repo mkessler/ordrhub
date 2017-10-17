@@ -1,29 +1,35 @@
-<p id="notice"><%= notice %></p>
+<h1 class="ui center aligned icon header">
+  <i class="circular building icon"></i>
+  <div class="content">
+    Stores
+    <div class="sub header">
+      Test User
+    </div>
+  </div>
+</h1>
 
-<h1>Stores</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Organization</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<table class="ui celled table">
   <tbody>
     <% @stores.each do |store| %>
       <tr>
-        <td><%= store.organization %></td>
-        <td><%= store.name %></td>
-        <td><%= link_to 'Show', store %></td>
-        <td><%= link_to 'Edit', edit_store_path(store) %></td>
-        <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <i class="map pin icon"></i>
+          <%= store.name %>
+          <div class="ui right floated buttons">
+            <%= link_to store_orders_path(store), class: "ui right floated right labeled icon button" do %>
+              <i class="right arrow icon"></i>
+              Orders
+            <% end %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Store', new_store_path %>
+<div class="extra">
+  <%= link_to new_store_path, class: "ui labeled icon positive button" do %>
+    <i class="plus icon"></i>
+    Store
+  <% end %>
+</div>

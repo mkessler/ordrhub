@@ -40,20 +40,27 @@
   <% end %>
 </div>
 
-<div class="ui pagination menu">
-  <a class="active item">
-    1
-  </a>
-  <div class="disabled item">
-    ...
+<div class="extra">
+  <%= link_to stores_path, class: "ui labeled icon button" do %>
+    <i class="left arrow icon"></i>
+    Back
+  <% end %>
+
+  <div class="ui pagination menu right floated">
+    <a class="active item">
+      1
+    </a>
+    <div class="disabled item">
+      ...
+    </div>
+    <a class="item">
+      10
+    </a>
+    <a class="item">
+      11
+    </a>
+    <a class="item">
+      12
+    </a>
   </div>
-  <a class="item">
-    10
-  </a>
-  <a class="item">
-    11
-  </a>
-  <a class="item">
-    12
-  </a>
 </div>

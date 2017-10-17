@@ -5,7 +5,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @stores = Store.all
+    @stores = current_user.stores
   end
 
   # GET /stores/1
@@ -54,18 +54,22 @@ class StoresController < ApplicationController
 
   # DELETE /stores/1
   # DELETE /stores/1.json
-  def destroy
-    @store.destroy
-    respond_to do |format|
-      format.html { redirect_to stores_url, notice: 'Store was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @store.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to stores_url, notice: 'Store was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store
-      @store = Store.find(params[:id])
+      @store = current_user.stores.find_by_id(params[:id]) ||
+        Store.find_by_id_and_organization_id!(
+          params[:id],
+          current_user.organizations.map(&:id)
+        )
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,4 +1,12 @@
-<h1>New Store</h1>
+<h1 class="ui center aligned icon header">
+  <i class="circular building icon"></i>
+  <div class="content">
+    Add Store
+    <div class="sub header">
+      <%= @organization.present? ? @organization : 'Test User' %>
+    </div>
+  </div>
+</h1>
 
 <%= render 'form', store: @store %>
 

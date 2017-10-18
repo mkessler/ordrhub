@@ -17,7 +17,9 @@
       <div class="content">
         <%= link_to "Order ##{order.details['number']}", store_order_path(@store, order), class: "header" %>
         <div class="meta">
-          <span class="cinema">May 29, 2017 9:25 PM</span>
+          <span class="cinema">
+            <%= "#{order.details['delivery_date']} #{order.details['delivery_time']}" %>
+          </span>
         </div>
         <div class="description">
           <p>

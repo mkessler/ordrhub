@@ -65,3 +65,6 @@ gem 'uber-ruby', require: 'uber'
 
 # Postmates
 gem 'postmates'
+
+# Pagination
+gem 'kaminari'

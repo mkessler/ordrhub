@@ -7,7 +7,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @stores = current_user.all_stores
+    @stores = Kaminari.paginate_array(current_user.all_stores).page(params[:page]).per(25)
   end
 
   # GET /stores/1

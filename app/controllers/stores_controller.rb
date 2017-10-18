@@ -1,11 +1,13 @@
 class StoresController < ApplicationController
   before_action :authenticate_user!
   before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization, except: [:index], if: :store_belongs_to_organization?
+  before_action :authenticate_user_store_access, except: [:index], unless: :store_belongs_to_organization?
 
   # GET /stores
   # GET /stores.json
   def index
-    @stores = current_user.stores
+    @stores = current_user.all_stores
   end
 
   # GET /stores/1

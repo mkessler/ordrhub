@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :organizations do
-    get :stores
-  end
+  resources :organizations
   resources :stores, except: [:show] do
     resources :orders, except: [:new, :edit]
   end

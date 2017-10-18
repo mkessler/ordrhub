@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_store
+  before_action :set_organization, if: :store_belongs_to_organization?
+  before_action :authenticate_user_store_access, unless: :store_belongs_to_organization?
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders

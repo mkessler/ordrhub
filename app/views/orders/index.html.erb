@@ -12,7 +12,7 @@
   <% @orders.each do |order| %>
     <div class="item">
       <div class="image">
-        <img src="https://semantic-ui.com/images/wireframe/image.png">
+        <%= image_tag("sources/logos/#{order.source.name.downcase}", class: "ui centered middle aligned image", style: "width: 80%;") %>
       </div>
       <div class="content">
         <%= link_to "Order ##{order.details['number']}", store_order_path(@store, order), class: "header" %>

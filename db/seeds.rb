@@ -56,11 +56,11 @@ Store.all.each do |store|
         count: rand(1..3)
       }
     end
-    subtotal = order_objects.sum { |item| item[:amount] * item[:count] }
+    total = order_objects.sum { |item| item[:amount] * item[:count] }
     fee = rand(2..4).round(2)
-    tax = (subtotal * 0.07).round(2)
-    tip = (subtotal * 0.18).round(2)
-    total = (subtotal + fee + tax + tip).round(2)
+    tax = (total * 0.07).round(2)
+    tip = (total * 0.18).round(2)
+    subtotal = (total + fee + tax + tip).round(2)
     received = Faker::Time.between(DateTime.now, DateTime.now + 30)
 
     Order.create(

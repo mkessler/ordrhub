@@ -4,8 +4,9 @@ class ZapierController < ApplicationController
   def incoming_order
     store = Store.first
     order = store.orders.new({
-      source_id: Source.first.id
-    }.merge(params[:zapier]))
+      source_id: Source.first.id,
+      details: params[:zapier]
+    }
 
     respond_to do |format|
       if order.save

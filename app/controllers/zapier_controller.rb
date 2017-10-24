@@ -6,7 +6,7 @@ class ZapierController < ApplicationController
     order = store.orders.new({
       source_id: Source.first.id,
       details: params[:zapier]
-    }
+    })
 
     respond_to do |format|
       if order.save

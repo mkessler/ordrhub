@@ -8,12 +8,17 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    semantic_breadcrumb @store.name, store_path(@store)
+    semantic_breadcrumb 'Orders', store_orders_path(@store)
     @orders = @store.orders.order(:created_at).page params[:page]
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    semantic_breadcrumb @store.name, store_path(@store)
+    semantic_breadcrumb 'Orders', store_orders_path(@store)
+    semantic_breadcrumb "##{@order.details['number']}", store_order_path(@store, @order)
   end
 
   # GET /orders/new

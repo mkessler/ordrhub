@@ -2,12 +2,12 @@
   <i class="circular building icon"></i>
   <div class="content">
     Add Store
-    <div class="sub header">
-      <%= @organization.present? ? @organization : 'Test User' %>
-    </div>
+    <% if @organization.present? %>
+      <div class="sub header">
+        <%= @organization.name %>
+      </div>
+    <% end %>
   </div>
 </h1>
 
 <%= render 'form', store: @store %>
-
-<%= link_to 'Back', stores_path %>

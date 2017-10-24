@@ -2,7 +2,9 @@ class StoresController < ApplicationController
   before_action :authenticate_user!
   before_action :set_store, only: [:show, :edit, :update, :destroy]
   before_action :set_organization, except: [:index], if: :store_belongs_to_organization?
-  before_action :authenticate_user_store_access, except: [:index], unless: :store_belongs_to_organization?
+  before_action :authenticate_user_store_access, except: [:index, :new, :create], unless: :store_belongs_to_organization?
+  #semantic_breadcrumb @organization.name, organization_path(@organization), if: :store_belongs_to_organization?
+  semantic_breadcrumb 'Stores', :stores_path
 
   # GET /stores
   # GET /stores.json
@@ -13,15 +15,19 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
+    semantic_breadcrumb @store.name, store_path(@store)
   end
 
   # GET /stores/new
   def new
+    semantic_breadcrumb 'Add Store', :new_store_path
     @store = Store.new
   end
 
   # GET /stores/1/edit
   def edit
+    semantic_breadcrumb @store.name, store_path(@store)
+    semantic_breadcrumb 'Edit', edit_store_path(@store)
   end
 
   # POST /stores

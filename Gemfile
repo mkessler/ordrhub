@@ -68,3 +68,6 @@ gem 'postmates'
 
 # Pagination
 gem 'kaminari'
+
+# Forms
+gem 'simple_form'

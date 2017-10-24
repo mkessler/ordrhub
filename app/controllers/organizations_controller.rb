@@ -1,6 +1,7 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  semantic_breadcrumb 'Organizations', :organizations_path
 
   # GET /organizations
   # GET /organizations.json
@@ -11,15 +12,19 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    semantic_breadcrumb @organization.name, organization_path(@organization)
   end
 
   # GET /organizations/new
   def new
+    semantic_breadcrumb 'New Organization', :new_organization_path
     @organization = Organization.new
   end
 
   # GET /organizations/1/edit
   def edit
+    semantic_breadcrumb @organization.name, organization_path(@organization)
+    semantic_breadcrumb 'Edit', edit_organization_path(@organization)
   end
 
   # POST /organizations

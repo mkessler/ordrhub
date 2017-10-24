@@ -3,30 +3,19 @@
     <h2 class="ui teal image header">
       <i class="shipping large circular icon"></i>
       <div class="content">
-        Log-in to your account
+        Log in to your account
       </div>
     </h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "ui large form #{'error' if resource.errors}" }) do |f| %>
+    <%= semantic_flash %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="ui segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.email_field :email, placeholder: "E-mail address"%>
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
-          </div>
-        </div>
-        <%= f.submit "Login", class: "ui fluid large teal submit button" %>
+        <%= f.input :email, label: false, placeholder: 'Email', autofocus: true %>
+        <%= f.input :password, label: false, placeholder: 'Password' %>
+        <%= f.input :remember_me, as: :boolean, wrapper: :ui_checkbox if devise_mapping.rememberable? %>
+
+        <%= f.button :submit, "Log in", class: "ui fluid large teal submit button" %>
       </div>
-
-      <%= semantic_flash %>
-      <!-- <div class="ui error message"></div> -->
     <% end %>
-
     <div class="ui message">
       New to us? <%= link_to "Sign up", new_registration_path(resource_name) %>
     </div>

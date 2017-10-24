@@ -1,6 +1,13 @@
-<h1>Editing Store</h1>
+<h1 class="ui center aligned icon header">
+  <i class="circular building icon"></i>
+  <div class="content">
+    Edit <%= @store.name %>
+    <% if @organization.present? %>
+      <div class="sub header">
+        <%= @organization.name %>
+      </div>
+    <% end %>
+  </div>
+</h1>
 
 <%= render 'form', store: @store %>
-
-<%= link_to 'Show', @store %> |
-<%= link_to 'Back', stores_path %>

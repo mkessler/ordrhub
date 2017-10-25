@@ -2,27 +2,29 @@
   <div class="ui container">
     <div class="ui large secondary inverted pointing menu">
       <a class="toc item">
-        <i class="sidebar icon"></i>
+        <i class="large sidebar icon"></i>
       </a>
       <a class="active item">Home</a>
-      <a class="item">Work</a>
-      <a class="item">Company</a>
-      <a class="item">Careers</a>
+      <a class="item">Demo</a>
       <div class="right item">
-        <a class="ui inverted button">Log in</a>
-        <a class="ui inverted button">Sign Up</a>
+        <%= link_to 'Log in', new_session_path(resource_name), class: 'ui inverted button' %>
+        <%= link_to 'Sign up', new_registration_path(resource_name), class: 'ui inverted button' %>
       </div>
     </div>
   </div>
   <div class="ui text container">
+    <div class="ui small image mt3">
+      <%= image_tag('logo/inverted-logo.png') %>
+    </div>
     <h1 class="ui inverted header">
       OrdrHub
-      <div class="sub header">All of your orders in one place.</div>
+      <div class="sub header">All of your orders in one place</div>
     </h1>
-    <h2>Simplify your order management by consolidating your orders across multiple delivery services into our easy-to-use hub.</h2>
-    <div class="ui huge primary button">Get Started
-      <i class="right arrow icon"></i>
-    </div>
+    <h2>Simplify your order management by consolidating your orders across multiple delivery services into one single hub.</h2>
+    <%= link_to new_registration_path(resource_name), class: 'ui huge primary right labeled icon button' do %>
+    <i class="right arrow icon"></i>
+      Get Started
+    <% end %>
   </div>
 </div>
 

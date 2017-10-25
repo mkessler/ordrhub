@@ -15,15 +15,15 @@
         <%= image_tag("sources/logos/#{order.source.name.downcase}", class: "ui centered middle aligned image", style: "width: 80%;") %>
       </div>
       <div class="content">
-        <%= link_to "Order ##{order.details['number']}", store_order_path(@store, order), class: "header" %>
+        <%= link_to "Order ##{order.details['reference']}", store_order_path(@store, order), class: "header" %>
         <div class="meta">
           <span class="cinema">
-            <%= "#{order.details['delivery_date']} #{order.details['delivery_time']}" %>
+            <%= "#{order.details['date']} #{order.details['time']}" %>
           </span>
         </div>
         <div class="description">
           <p>
-            Items: <%= order.items.count %> | Subtotal: <%= order.details['subtotal'] %>
+            Items: UPDATE | Subtotal: <%= order.details['grandTotal'] %>
           </p>
         </div>
         <div class="extra">

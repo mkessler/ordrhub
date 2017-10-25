@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   def show
     semantic_breadcrumb @store.name, store_path(@store)
     semantic_breadcrumb 'Orders', store_orders_path(@store)
-    semantic_breadcrumb "##{@order.details['number']}", store_order_path(@store, @order)
+    semantic_breadcrumb "##{@order.details['reference']}", store_order_path(@store, @order)
   end
 
   # GET /orders/new

@@ -1,7 +1,7 @@
 <h1 class="ui center aligned icon header">
   <i class="circular barcode icon"></i>
   <div class="content">
-    Order #<%= @order.details['number'] %>
+    Order #<%= @order.details['reference'] %>
     <div class="sub header">
       <%= @store.name %>
     </div>
@@ -12,39 +12,37 @@
   <tbody>
     <tr>
       <td>Customer Name</td>
-      <td><%= @order.details['customer_name'] %></td>
+      <td><%= @order.details['dropoffName'] %></td>
     </tr>
     <tr>
       <td>Customer Phone</td>
-      <td><%= @order.details['customer_phone'] %></td>
+      <td><%= @order.details['dropoffPhone'] %></td>
     </tr>
     <tr>
       <td>Delivery Date</td>
-      <td><%= @order.details['delivery_date'] %></td>
+      <td><%= @order.details['date'] %></td>
     </tr>
     <tr>
       <td>Delivery Address</td>
-      <td><%= @order.details['delivery_address'] %></td>
+      <td><%= @order.details['dropoffAddress'] %></td>
     </tr>
     <tr>
       <td>Delivery City</td>
-      <td><%= @order.details['delivery_city'] %></td>
+      <td><%= @order.details['dropoffCity'] %></td>
     </tr>
     <tr>
       <td>Delivery Time</td>
-      <td><%= @order.details['delivery_time'] %></td>
+      <td><%= @order.details['time'] %></td>
     </tr>
     <tr>
       <td>Items</td>
       <td>
-        <% @order.items.each do |item| %>
-          <div><%= item %></div>
-        <% end %>
+        <%= @order.details['items'] %>
       </td>
     </tr>
     <tr>
       <td>Total</td>
-      <td><%= @order.details['total'] %></td>
+      <td><%= @order.details['subTotal'] %></td>
     </tr>
     <tr>
       <td>Tax</td>
@@ -52,7 +50,7 @@
     </tr>
     <tr>
       <td>Fee</td>
-      <td><%= @order.details['fee'] %></td>
+      <td><%= @order.details['customerFee'] %></td>
     </tr>
     <tr>
       <td>Tip</td>
@@ -60,7 +58,7 @@
     </tr>
     <tr>
       <td>Subtotal</td>
-      <td><%= @order.details['subtotal'] %></td>
+      <td><%= @order.details['grandTotal'] %></td>
     </tr>
   </tbody>
 </table>

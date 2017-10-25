@@ -6,7 +6,7 @@ class ZapierController < ApplicationController
     email = Nokogiri::HTML(params[:zapier][:HtmlDocument])
     confirmation_link = email.search('a[href*="orderemails.grubhub.com"]').first.attributes['href'].value
     order_params = params[:zapier].delete("HtmlDocument")
-    order_params[:confirmation_link] = confirmation_link
+    order_params['confirmation_link'] = confirmation_link
 
     order = store.orders.new({
       source_id: Source.first.id,

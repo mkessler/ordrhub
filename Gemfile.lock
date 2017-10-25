@@ -219,6 +219,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.0.5)
+  nokogiri
   pg (~> 0.18)
   postmates
   puma (~> 3.0)

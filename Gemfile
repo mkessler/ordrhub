@@ -71,3 +71,6 @@ gem 'kaminari'
 
 # Forms
 gem 'simple_form'
+
+# Parsing
+gem 'nokogiri'

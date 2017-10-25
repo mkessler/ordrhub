@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'dashboard/index'
   get 'marketing/index'
-  post 'zapier/incoming_order'
+  post 'zapier/incoming_grubhub_order'
 
   authenticated :user do
     root to: redirect('/dashboard/index'), as: :authenticated_root

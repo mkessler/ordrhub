@@ -27,11 +27,10 @@
           </p>
         </div>
         <div class="extra">
-          <div class="ui buttons">
-            <button class="ui negative button">Decline</button>
-            <div class="or"></div>
-            <button class="ui positive button">Confirm</button>
-          </div>
+          <%= link_to order.details['confirmation_link'], class: "ui left floated right labeled icon positive button" do %>
+            <i class="right arrow check"></i>
+            Confirm
+          <% end %>
           <%= link_to store_order_path(@store, order), class: "ui right floated right labeled icon button" do %>
             <i class="right arrow icon"></i>
             View
@@ -43,10 +42,5 @@
 </div>
 
 <div class="extra">
-  <%= link_to stores_path, class: "ui labeled icon button" do %>
-    <i class="left arrow icon"></i>
-    Back
-  <% end %>
-
   <%= paginate @orders %>
 </div>

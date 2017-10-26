@@ -64,12 +64,8 @@
 </table>
 
 <div class="extra">
-  <%= link_to store_orders_path(@store), class: "ui labeled icon button" do %>
-    <i class="left arrow icon"></i>
-    Back
-  <% end %>
-  <%= link_to @order.details['confirmation_link'], class: "ui right floated labeled icon positive button" do %>
-    <i class="right arrow check"></i>
+  <%= link_to @order.details['confirmation_link'], class: "ui right floated right labeled icon positive button" do %>
+    <i class="right arrow checkmark"></i>
     Confirm
   <% end %>
 </div>

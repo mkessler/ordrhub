@@ -1,9 +1,52 @@
-<p id="notice"><%= notice %></p>
+<h1 class="ui center aligned icon header">
+  <i class="circular cube icon"></i>
+  <div class="content">
+    <%= @organization.name %>
+  </div>
+</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @organization.name %>
-</p>
+<div class="extra float-container mb1">
+  <%= link_to edit_organization_path(@organization), class: "ui right floated labeled icon button" do %>
+    <i class="edit icon"></i>
+    Edit
+  <% end %>
+</div>
 
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
+<div class="ui two column center aligned grid">
+  <div class="column">
+    <div class="ui fluid card">
+      <div class="content">
+        <div class="ui teal statistic">
+          <div class="value">
+            <%= @stores_count %>
+          </div>
+          <div class="label">
+            <%= 'Store'.pluralize(@stores_count) %>
+          </div>
+        </div>
+      </div>
+      <%= link_to stores_path, class: "ui bottom attached button" do %>
+        <i class="unordered list icon"></i>
+        View Stores
+      <% end %>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui fluid card">
+      <div class="content">
+        <div class="ui yellow statistic">
+          <div class="value">
+            <%= @users_count %>
+          </div>
+          <div class="label">
+            <%= 'User'.pluralize(@users_count) %>
+          </div>
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <i class="users icon"></i>
+        Manage Users
+      </div>
+    </div>
+  </div>
+</div>

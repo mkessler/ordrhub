@@ -4,7 +4,7 @@ class StoresController < ApplicationController
   before_action :set_organization, except: [:index], if: :store_belongs_to_organization?
   before_action :authenticate_user_store_access, except: [:index, :new, :create], unless: :store_belongs_to_organization?
   #semantic_breadcrumb @organization.name, organization_path(@organization), if: :store_belongs_to_organization?
-  semantic_breadcrumb 'Stores', :stores_path
+  semantic_breadcrumb 'Stores', :stores_path, except: [:index]
 
   # GET /stores
   # GET /stores.json

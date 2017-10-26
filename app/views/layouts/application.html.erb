@@ -13,7 +13,7 @@
     <div class="ui inverted menu" style="border-radius: 0;">
       <div class="ui container">
         <a href="/" class="header item">
-          <i class="inverted shipping large icon"></i>
+          <%= image_tag 'logo/inverted-logo.png', class: 'ui mini image mr1' %>
           OrdrHub
         </a>
         <div class="ui right floated simple dropdown item">
@@ -31,6 +31,11 @@
     </div>
 
     <div class="ui main text container sticky-footer-content">
+      <div class="ui three item menu">
+        <%= link_to 'Organizations', organizations_path, class: "item #{'active' if menu_item_is_active?('organizations')}" %>
+        <%= link_to 'Stores', stores_path, class: "item #{'active' if menu_item_is_active?('stores')}" %>
+        <%= link_to 'Account', edit_registration_path(resource_name), class: "item #{'active' if menu_item_is_active?('registrations')}" %>
+      </div>
       <%= semantic_breadcrumbs %>
       <div class="ui teal message transition <%= 'hidden' unless notice.present? %>">
         <i class="close icon"></i>

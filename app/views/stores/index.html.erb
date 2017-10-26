@@ -17,7 +17,7 @@
     <tr>
       <th>Store</th>
       <th>Orders</th>
-      <th></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +25,7 @@
       <tr>
         <td><%= link_to store.name, store %></td>
         <td><%= store.orders.count %></td>
-        <td class="ui right aligned">
+        <td class="ui right aligned" colspan="2">
           <%= link_to store, class: "ui labeled icon button" do %>
             <i class="building icon"></i>
             View

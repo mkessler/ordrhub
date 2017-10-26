@@ -1,14 +1,57 @@
-<p id="notice"><%= notice %></p>
+<h1 class="ui center aligned icon header">
+  <i class="circular building icon"></i>
+  <div class="content">
+    <%= @store.name %>
+    <% if @organization.present? %>
+      <div class="sub header">
+        <%= @organization.name %>
+      </div>
+    <% end %>
+  </div>
+</h1>
 
-<p>
-  <strong>Organization:</strong>
-  <%= @store.organization %>
-</p>
+<div class="extra float-container mb1">
+  <%= link_to edit_store_path(@store), class: "ui right floated labeled icon button" do %>
+    <i class="edit icon"></i>
+    Edit
+  <% end %>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
-</p>
-
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+<div class="ui two column center aligned grid">
+  <div class="column">
+    <div class="ui fluid card">
+      <div class="content">
+        <div class="ui teal statistic">
+          <div class="value">
+            <%= @orders_count %>
+          </div>
+          <div class="label">
+            <%= 'Order'.pluralize(@orders_count) %>
+          </div>
+        </div>
+      </div>
+      <%= link_to store_orders_path(@store), class: "ui bottom attached button" do %>
+        <i class="unordered list icon"></i>
+        View Orders
+      <% end %>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui fluid card">
+      <div class="content">
+        <div class="ui yellow statistic">
+          <div class="value">
+            <%= @users_count %>
+          </div>
+          <div class="label">
+            <%= 'User'.pluralize(@users_count) %>
+          </div>
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <i class="users icon"></i>
+        Manage Users
+      </div>
+    </div>
+  </div>
+</div>

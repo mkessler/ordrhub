@@ -5,30 +5,41 @@
   </div>
 </h1>
 
+<div class="extra float-container">
+  <%= link_to new_store_path, class: "ui right floated labeled icon positive button" do %>
+    <i class="plus icon"></i>
+    Store
+  <% end %>
+</div>
+
 <table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Store</th>
+      <th>Orders</th>
+      <th></th>
+    </tr>
+  </thead>
   <tbody>
     <% @stores.each do |store| %>
       <tr>
-        <td>
-          <i class="map pin icon"></i>
-          <%= store.name %>
-          <div class="ui right floated buttons">
-            <%= link_to store_orders_path(store), class: "ui right floated right labeled icon button" do %>
-              <i class="right arrow icon"></i>
-              Orders
-            <% end %>
-          </div>
+        <td><%= link_to store.name, store %></td>
+        <td><%= store.orders.count %></td>
+        <td class="ui right aligned">
+          <%= link_to store, class: "ui labeled icon button" do %>
+            <i class="building icon"></i>
+            View
+          <% end %>
+          <%= link_to store_orders_path(store), class: "ui labeled icon button" do %>
+            <i class="unordered list icon"></i>
+            Orders
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<div class="extra">
-  <%= link_to new_store_path, class: "ui labeled icon positive button" do %>
-    <i class="plus icon"></i>
-    Store
-  <% end %>
-
+<div class="extra float-container">
   <%= paginate @stores %>
 </div>

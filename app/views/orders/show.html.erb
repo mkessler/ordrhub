@@ -8,6 +8,17 @@
   </div>
 </h1>
 
+<div class="extra float-container mb1">
+  <%= link_to store_orders_path(@store), class: "ui labeled icon button" do %>
+    <i class="left arrow icon"></i>
+    Orders
+  <% end %>
+  <%= link_to @order.details['confirmation_link'], class: "ui right floated right labeled icon positive button", target: "_blank" do %>
+    <i class="right checkmark icon"></i>
+    Confirm
+  <% end %>
+</div>
+
 <table class="ui celled table">
   <tbody>
     <tr>
@@ -62,10 +73,3 @@
     </tr>
   </tbody>
 </table>
-
-<div class="extra">
-  <%= link_to @order.details['confirmation_link'], class: "ui right floated right labeled icon positive button" do %>
-    <i class="right checkmark icon"></i>
-    Confirm
-  <% end %>
-</div>

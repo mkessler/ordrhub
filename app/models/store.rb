@@ -5,4 +5,12 @@ class Store < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   validates :name, presence: true
+
+  def users_count
+    if organization_id?
+      organization.users.count + users.count
+    else
+      users.count
+    end
+  end
 end

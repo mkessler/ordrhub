@@ -16,6 +16,8 @@ class StoresController < ApplicationController
   # GET /stores/1.json
   def show
     semantic_breadcrumb @store.name, store_path(@store)
+    @orders_count = @store.orders.count
+    @users_count = @store.users_count
   end
 
   # GET /stores/new

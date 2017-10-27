@@ -5,6 +5,7 @@
     <title>OrdrHub</title>
     <%= csrf_meta_tags %>
     <%= render partial: 'layouts/favicons' %>
+    <meta name="turbolinks-cache-control" content="no-cache">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <style type="text/css">
       .hidden.menu {
@@ -94,7 +95,7 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script>
-      $(document).ready(function() {
+      $(document).on('turbolinks:load', function() {
         // fix menu when passed
         $('.masthead').visibility({
           once: false,
@@ -114,8 +115,10 @@
   <body class="pushable">
     <div class="ui large top fixed hidden menu">
       <div class="ui container">
-        <a class="active item">Home</a>
-        <a class="item">Demo</a>
+        <a href="/" class="active item">
+          <%= image_tag 'logo/logo.png', class: 'ui mini image mr1' %>
+          OrdrHub
+        </a>
         <div class="right menu">
           <div class="item">
             <%= link_to 'Log in', new_session_path(resource_name), class: 'ui button' %>

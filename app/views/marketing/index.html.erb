@@ -1,11 +1,13 @@
 <div class="ui inverted vertical masthead center aligned segment">
   <div class="ui container">
     <div class="ui large secondary inverted pointing menu">
-      <a class="toc item">
-        <i class="large sidebar icon"></i>
-      </a>
-      <a class="active item">Home</a>
-      <a class="item">Demo</a>
+      <div class="hidden-xs-up">
+        <a class="toc item">
+          <i class="large sidebar icon"></i>
+        </a>
+        <a class="active item">Home</a>
+        <a class="item">Demo</a>
+      </div>
       <div class="right item">
         <%= link_to 'Log in', new_session_path(resource_name), class: 'ui inverted button' %>
         <%= link_to 'Sign up', new_registration_path(resource_name), class: 'ui inverted button' %>

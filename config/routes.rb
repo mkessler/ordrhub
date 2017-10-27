@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resources :orders, except: [:new, :edit]
   end
 
-  get 'home/index'
   get 'dashboard/index'
   get 'marketing/index'
+  get 'privacy_policy', to: "marketing#privacy_policy"
   post 'zapier/incoming_grubhub_order'
 
   authenticated :user do

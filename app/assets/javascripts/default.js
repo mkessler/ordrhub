@@ -4,6 +4,9 @@ $(function(){
     $(this).closest('.message').transition('fade');
   });
 
+  // Initialize accordions
+  $('.ui.accordion').accordion();
+
   // Initialize select inputs
   $('select').dropdown();
 });

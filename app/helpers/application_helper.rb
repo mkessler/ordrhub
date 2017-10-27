@@ -1,6 +1,7 @@
 module ApplicationHelper
   def menu_item_is_active?(item)
-    params[:controller].include?(item)
+    params[:controller].include?(item) ||
+      item == 'stores' && params[:controller] == 'orders'
   end
 
   def user_display_name

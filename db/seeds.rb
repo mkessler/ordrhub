@@ -24,11 +24,15 @@ Store.create(name: 'ROCKSALT')
 
 User.create(
   email: 'user1@example.com',
-  password: 'password'
+  password: 'password',
+  first_name: 'User',
+  last_name: 'One'
 )
 User.create(
   email: 'user2@example.com',
-  password: 'password'
+  password: 'password',
+  first_name: 'User',
+  last_name: 'Two'
 )
 
 Membership.create(

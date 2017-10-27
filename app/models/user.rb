@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def all_stores
     stores + Store.where(organization_id: organizations.map(&:id))
   end
+
+  def user_name
+    "#{first_name} #{last_name}".strip
+  end
 end

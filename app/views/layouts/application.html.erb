@@ -17,7 +17,12 @@
           OrdrHub
         </a>
         <div class="ui right floated simple dropdown item">
-          <%= user_signed_in? ? 'Test User' : 'Welcome' %>
+          <span class="hidden-sm-down">
+            <%= user_display_name %>
+          </span>
+          <span class="hidden-md-up">
+            <i class="user icon"></i>
+          </span>
           <i class="dropdown icon"></i>
           <div class="menu">
             <% if user_signed_in? %>
@@ -32,9 +37,24 @@
 
     <div class="ui main text container sticky-footer-content">
       <div class="ui three item menu">
-        <%= link_to 'Organizations', organizations_path, class: "item #{'active' if menu_item_is_active?('organizations')}" %>
-        <%= link_to 'Stores', stores_path, class: "item #{'active' if menu_item_is_active?('stores')}" %>
-        <%= link_to 'Account', edit_registration_path(resource_name), class: "item #{'active' if menu_item_is_active?('registrations')}" %>
+        <%= link_to organizations_path, class: "item #{'active' if menu_item_is_active?('organizations')}" do %>
+          <span class="hidden-xs-down">Organizations</span>
+          <span class="hidden-sm-up">
+            <i class="sitemap icon"></i>
+          </span>
+        <% end %>
+        <%= link_to stores_path, class: "item #{'active' if menu_item_is_active?('stores')}" do %>
+          <span class="hidden-xs-down">Stores</span>
+          <span class="hidden-sm-up">
+            <i class="building icon"></i>
+          </span>
+        <% end %>
+        <%= link_to edit_registration_path(resource_name), class: "item #{'active' if menu_item_is_active?('registrations')}" do %>
+          <span class="hidden-xs-down">Account</span>
+          <span class="hidden-sm-up">
+            <i class="user icon"></i>
+          </span>
+        <% end %>
       </div>
       <%= semantic_breadcrumbs %>
       <div class="ui teal message transition <%= 'hidden' unless notice.present? %>">
@@ -52,7 +72,7 @@
       <div class="ui center aligned container">
         <div class="ui horizontal inverted small divided link list">
           <a class="item" href="#">Site Map</a>
-          <a class="item" href="#">Contact Us</a>
+          <a class="item" href="mailto:ordrhub@gmail.com">Contact Us</a>
           <a class="item" href="#">Terms and Conditions</a>
           <a class="item" href="#">Privacy Policy</a>
         </div>

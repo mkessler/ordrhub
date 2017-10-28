@@ -18,7 +18,7 @@
   <% @orders.each do |order| %>
     <div class="item">
       <div class="image">
-        <%= image_tag("sources/logos/#{order.source.name.downcase}.png", class: "ui centered middle aligned image", style: "width: 80%;") %>
+        <%= image_tag("sources/logos/#{order.source.name.downcase}.png", class: "ui centered middle aligned image", style: "width: 140px !important;") %>
       </div>
       <div class="content">
         <%= link_to "Order ##{order.details['reference']}", store_order_path(@store, order), class: "header" %>

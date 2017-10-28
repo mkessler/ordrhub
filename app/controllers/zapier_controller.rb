@@ -1,5 +1,6 @@
 class ZapierController < ApplicationController
   skip_before_action :verify_authenticity_token
+  include ZapierHelper
 
   def incoming_grubhub_order
     store = Store.first

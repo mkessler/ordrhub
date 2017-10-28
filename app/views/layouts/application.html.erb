@@ -37,12 +37,14 @@
     </div>
 
     <div class="ui main text container sticky-footer-content">
-      <div class="ui three item menu">
-        <%= link_to organizations_path, class: "item #{'active' if menu_item_is_active?('organizations')}" do %>
-          <span class="hidden-xs-down">Organizations</span>
-          <span class="hidden-sm-up">
-            <i class="sitemap icon"></i>
-          </span>
+      <div class="ui <%= current_user.organizations.present? ? 'three' : 'two' %> item menu">
+        <% if current_user.organizations.present? %>
+          <%= link_to organizations_path, class: "item #{'active' if menu_item_is_active?('organizations')}" do %>
+            <span class="hidden-xs-down">Organizations</span>
+            <span class="hidden-sm-up">
+              <i class="sitemap icon"></i>
+            </span>
+          <% end %>
         <% end %>
         <%= link_to stores_path, class: "item #{'active' if menu_item_is_active?('stores')}" do %>
           <span class="hidden-xs-down">Stores</span>

@@ -54,6 +54,13 @@
   display: none !important;
 }
 
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
 
 .text-left {
   text-align: left !important;

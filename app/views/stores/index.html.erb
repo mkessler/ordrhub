@@ -6,6 +6,9 @@
 </h1>
 
 <div class="extra float-container">
+  <div class="pull-left">
+    <%= paginate @stores %>
+  </div>
   <%= link_to new_store_path, class: "ui right floated labeled icon positive button" do %>
     <i class="plus icon"></i>
     Store

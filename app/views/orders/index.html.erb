@@ -8,6 +8,12 @@
   </div>
 </h1>
 
+<div class="extra float-container">
+  <div class="pull-left">
+    <%= paginate @orders %>
+  </div>
+</div>
+
 <div class="ui segment divided items">
   <% @orders.each do |order| %>
     <div class="item">

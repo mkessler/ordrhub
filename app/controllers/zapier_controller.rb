@@ -11,7 +11,7 @@ class ZapierController < ApplicationController
     )
 
     order = store.orders.new({
-      source_id: order_source_id,
+      source_id: order_source_id(params['zapier']['Template']),
       details: order_params
     })
 

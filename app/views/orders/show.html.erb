@@ -9,7 +9,7 @@
 </h1>
 
 <div class="extra float-container mb1">
-  <%= link_to store_orders_path(@store), class: "ui labeled icon button" do %>
+  <%= link_to store_orders_path(@store, page: params[:page]), class: "ui labeled icon button" do %>
     <i class="left arrow icon"></i>
     Orders
   <% end %>
@@ -20,56 +20,5 @@
 </div>
 
 <table class="ui celled table">
-  <tbody>
-    <tr>
-      <td>Customer Name</td>
-      <td><%= @order.details['dropoffName'] %></td>
-    </tr>
-    <tr>
-      <td>Customer Phone</td>
-      <td><%= @order.details['dropoffPhone'] %></td>
-    </tr>
-    <tr>
-      <td>Delivery Date</td>
-      <td><%= @order.details['date'] %></td>
-    </tr>
-    <tr>
-      <td>Delivery Address</td>
-      <td><%= @order.details['dropoffAddress'] %></td>
-    </tr>
-    <tr>
-      <td>Delivery City</td>
-      <td><%= @order.details['dropoffCity'] %></td>
-    </tr>
-    <tr>
-      <td>Delivery Time</td>
-      <td><%= @order.details['time'] %></td>
-    </tr>
-    <tr>
-      <td>Items</td>
-      <td>
-        <%= @order.details['items'] %>
-      </td>
-    </tr>
-    <tr>
-      <td>Total</td>
-      <td><%= @order.details['subTotal'] %></td>
-    </tr>
-    <tr>
-      <td>Tax</td>
-      <td><%= @order.details['tax'] %></td>
-    </tr>
-    <tr>
-      <td>Fee</td>
-      <td><%= @order.details['customerFee'] %></td>
-    </tr>
-    <tr>
-      <td>Tip</td>
-      <td><%= @order.details['tip'] %></td>
-    </tr>
-    <tr>
-      <td>Subtotal</td>
-      <td><%= @order.details['grandTotal'] %></td>
-    </tr>
-  </tbody>
+  <%= render partial: "orders/#{@order.source.name.downcase}" %>
 </table>

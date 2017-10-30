@@ -24,7 +24,7 @@
         <%= link_to "Order ##{order.details['reference']}", store_order_path(@store, order, page: params[:page]), class: "header" %>
         <div class="meta">
           <span class="cinema">
-            <%= "#{order.details['date']} #{order.details['time']}" %>
+            <%= "#{order.details['date']} #{'•' if order.details['time'].present? } #{order.details['time']}" %>
           </span>
         </div>
         <div class="description">

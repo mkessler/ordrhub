@@ -74,3 +74,5 @@ gem 'simple_form'
 
 # Parsing
 gem 'nokogiri'
+
+gem 'scout_apm'

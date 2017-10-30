@@ -1,0 +1,46 @@
+<tbody>
+  <tr>
+    <td>Customer Name</td>
+    <td><%= @order.details['dropoffName'] %></td>
+  </tr>
+  <tr>
+    <td>Customer Phone</td>
+    <td><%= @order.details['dropoffPhone'] %></td>
+  </tr>
+  <tr>
+    <td>Delivery Date</td>
+    <td><%= @order.details['date'] %></td>
+  </tr>
+  <tr>
+    <td>Delivery Time</td>
+    <td><%= @order.details['time'] %></td>
+  </tr>
+  <tr>
+    <td>Items</td>
+    <td>
+      <% grubhub_items(@order).each do |item| %>
+        <div><%= item %></div>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td><%= @order.details['subTotal'] %></td>
+  </tr>
+  <tr>
+    <td>Tax</td>
+    <td><%= @order.details['tax'] %></td>
+  </tr>
+  <tr>
+    <td>Fee</td>
+    <td><%= @order.details['customerFee'] %></td>
+  </tr>
+  <tr>
+    <td>Tip</td>
+    <td><%= @order.details['tip'] %></td>
+  </tr>
+  <tr>
+    <td>Subtotal</td>
+    <td><%= @order.details['grandTotal'] %></td>
+  </tr>
+</tbody>

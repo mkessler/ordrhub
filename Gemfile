@@ -75,5 +75,9 @@ gem 'simple_form'
 # Parsing
 gem 'nokogiri'
 
+# Search
+gem 'pg_search'
+
+# Monitoring
 gem 'newrelic_rpm'
 gem 'scout_apm'

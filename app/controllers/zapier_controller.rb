@@ -12,7 +12,10 @@ class ZapierController < ApplicationController
 
     order = store.orders.new({
       source_id: order_source_id(params['zapier']['Template']),
-      details: order_params
+      details: order_params,
+      name: params['zapier']['dropoffName'],
+      number: params['zapier']['reference'],
+      phone_number: params['zapier']['dropoffPhone']
     })
 
     respond_to do |format|

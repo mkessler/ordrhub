@@ -10,7 +10,17 @@ class OrdersController < ApplicationController
   def index
     semantic_breadcrumb @store.name, store_path(@store)
     semantic_breadcrumb 'Orders', store_orders_path(@store)
-    @orders = @store.orders.order(:created_at).page params[:page]
+    if params[:search]
+      @orders = @store.orders.search(params['search']).order(:created_at).page params[:page]
+      @show_view_all_button = true
+      if @orders.blank?
+        flash[:alert] = 'No orders found matching search criteria. Showing all.'
+        @orders = @store.orders.order(:created_at).page params[:page]
+        @show_view_all_button = false
+      end
+    else
+      @orders = @store.orders.order(:created_at).page params[:page]
+    end
   end
 
   # GET /orders/1

@@ -11,6 +11,30 @@
 <div class="extra float-container">
   <div class="pull-left">
     <%= paginate @orders %>
+    <% if params[:search] %>
+      <div class="mt1">
+        <%= link_to store_orders_path(@store, page: params[:page]), class: "ui left labeled icon button" do %>
+          <i class="left arrow icon"></i>
+          View All
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="pull-right">
+    <%= form_tag store_orders_path(@store), class: 'ui form', method: :get do %>
+      <div class="ui search">
+        <div class="ui icon input">
+          <%= text_field_tag(
+            :search,
+            nil,
+            placeholder: 'Search...',
+            'data-content' => 'Search by Order Number, Name, or Phone Number',
+            'data-position' => 'top center'
+          ) %>
+          <i class="search icon"></i>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 

@@ -7,5 +7,9 @@ class Order < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   include PgSearch
-  multisearchable :against => [:name, :number, :phone_number]
+  pg_search_scope :search,
+                  against: [:name, :number, :phone_number],
+                  using: {
+                    tsearch: { dictionary: 'english'}
+                  }
 end

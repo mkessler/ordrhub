@@ -9,4 +9,7 @@ $(document).on('turbolinks:load', function(){
 
   // Initialize select inputs
   $('select').dropdown();
+
+  // Tooltips
+  $('[data-content], [data-title]').popup();
 });

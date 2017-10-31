@@ -1,4 +1,17 @@
 module ApplicationHelper
+  def flash_class(type)
+    case type
+      when 'success'
+        'ui green message'
+      when 'error'
+        'ui red message'
+      when 'notice'
+        'ui blue message'
+      else
+        'ui message'
+    end
+  end
+
   def menu_item_is_active?(item)
     params[:controller].include?(item) ||
       item == 'stores' && params[:controller] == 'orders'

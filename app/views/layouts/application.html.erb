@@ -60,14 +60,7 @@
         <% end %>
       </div>
       <%= semantic_breadcrumbs %>
-      <div class="ui teal message transition <%= 'hidden' unless notice.present? %>">
-        <i class="close icon"></i>
-        <%= notice %>
-      </div>
-      <div class="ui orange message transition <%= 'hidden' unless alert.present? %>">
-        <i class="close icon"></i>
-        <%= alert %>
-      </div>
+      <%= render partial: 'shared/flash_messages' %>
       <%= yield %>
     </div>
 

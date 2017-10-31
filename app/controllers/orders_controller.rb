@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @orders = @store.orders.search(params['search']).order(:created_at).page params[:page]
       @show_view_all_button = true
       if @orders.blank?
-        flash[:alert] = 'No orders found matching search criteria. Showing all.'
+        flash.now[:error] = 'No orders found matching search criteria. Showing all.'
         @orders = @store.orders.order(:created_at).page params[:page]
         @show_view_all_button = false
       end

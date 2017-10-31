@@ -26,7 +26,7 @@
         <div class="ui icon input">
           <%= text_field_tag(
             :search,
-            nil,
+            params[:search],
             placeholder: 'Search...',
             'data-content' => 'Search by Order Number, Name, or Phone Number',
             'data-position' => 'top center'

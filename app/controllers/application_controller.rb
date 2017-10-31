@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_store_access
     unless Association.exists?(store_id: @store.id, user_id: current_user.id)
-      flash[:alert] = "When you're a spy..."
+      flash[:notice] = "When you're a spy..."
       redirect_to stores_path
     end
   end

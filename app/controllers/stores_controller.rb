@@ -1,10 +1,10 @@
 class StoresController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:incoming_order]
   before_action :set_store, only: [:show, :edit, :update, :destroy]
-  before_action :set_organization, except: [:index], if: :store_belongs_to_organization?
-  before_action :authenticate_user_store_access, except: [:index, :new, :create], unless: :store_belongs_to_organization?
+  before_action :set_organization, except: [:index, :incoming_order], if: :store_belongs_to_organization?
+  before_action :authenticate_user_store_access, except: [:index, :new, :create, :incoming_order], unless: :store_belongs_to_organization?
   #semantic_breadcrumb @organization.name, organization_path(@organization), if: :store_belongs_to_organization?
-  semantic_breadcrumb 'Stores', :stores_path, except: [:index]
+  semantic_breadcrumb 'Stores', :stores_path, except: [:index, :incoming_order]
 
   # GET /stores
   # GET /stores.json
@@ -71,6 +71,11 @@ class StoresController < ApplicationController
   #     format.json { head :no_content }
   #   end
   # end
+
+  def incoming_order
+    puts "Order received!"
+    puts params
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

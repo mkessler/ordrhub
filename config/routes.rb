@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :organizations
   resources :stores do
+    post :incoming_order, on: :collection
     resources :orders, except: [:new, :edit]
   end
 

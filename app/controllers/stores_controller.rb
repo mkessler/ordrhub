@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:incoming_order]
   before_action :authenticate_user!, except: [:incoming_order]
   before_action :set_store, only: [:show, :edit, :update, :destroy]
   before_action :set_organization, except: [:index, :incoming_order], if: :store_belongs_to_organization?

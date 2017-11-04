@@ -76,6 +76,7 @@ class StoresController < ApplicationController
   def incoming_order
     puts "Order received!"
     puts params
+    puts "Email from: #{params[:from]}"
   end
 
   private

@@ -74,9 +74,13 @@ class StoresController < ApplicationController
   # end
 
   def incoming_order
-    puts "Order received!"
-    puts params
-    puts "Email from: #{params[:from]}"
+    if store = Store.find_by_email(request.POST.get('sender'))
+      puts "Store exists for #{request.POST.get('sender')}"
+      head 200
+    else
+      puts "No store exists for #{request.POST.get('sender')}"
+      head 406
+    end
   end
 
   private

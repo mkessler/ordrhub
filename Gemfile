@@ -39,7 +39,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   # Fake data
-  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do
@@ -81,3 +81,5 @@ gem 'pg_search'
 # Monitoring
 gem 'newrelic_rpm'
 gem 'scout_apm'
+
+gem 'rest-client'

@@ -76,6 +76,12 @@ class StoresController < ApplicationController
   def incoming_order
     if store = Store.find_by_email(params['sender'])
       puts "Store exists for #{params['sender']}"
+      message_url = params['message-url'].gsub('https://', '')
+
+      RestClient.post "https://api:#{ENV['MAILGUN_API_KEY']}"\
+        "@#{message_url}",
+        to: "ordrhub@in.parseur.com"
+
       head 200
     else
       puts "No store exists for #{params['sender']}"

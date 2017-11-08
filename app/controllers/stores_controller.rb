@@ -74,11 +74,11 @@ class StoresController < ApplicationController
   # end
 
   def incoming_order
-    if store = Store.find_by_email(request.POST.get('sender'))
-      puts "Store exists for #{request.POST.get('sender')}"
+    if store = Store.find_by_email(params['Sender'])
+      puts "Store exists for #{params['Sender']}"
       head 200
     else
-      puts "No store exists for #{request.POST.get('sender')}"
+      puts "No store exists for #{params['Sender']}"
       head 406
     end
   end

@@ -80,7 +80,8 @@ class StoresController < ApplicationController
 
       RestClient.post "https://api:#{ENV['MAILGUN_API_KEY']}"\
         "@#{message_url}",
-        to: "ordrhub@in.parseur.com"
+        to: "ordrhub@in.parseur.com",
+        from: store.email
 
       head 200
     else

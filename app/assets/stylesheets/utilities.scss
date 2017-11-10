@@ -1,3 +1,12 @@
+.border-radius-0 {
+  border-radius: unset !important;
+}
+
+.border-bottom-radius-0 {
+  border-bottom-left-radius: unset !important;
+  border-bottom-right-radius: unset !important;
+}
+
 .float-container {
   overflow: hidden;
 }

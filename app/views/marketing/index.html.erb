@@ -1,4 +1,4 @@
-<div class="ui inverted vertical masthead center aligned segment">
+<div class="ui inverted vertical masthead center aligned segment pt2">
   <div class="ui container">
     <div class="ui large secondary inverted pointing menu">
       <div class="hidden-xs-up">
@@ -10,7 +10,8 @@
       </div>
       <div class="right item">
         <%= link_to 'Log in', new_session_path(resource_name), class: 'ui inverted button' %>
-        <%= link_to 'Sign up', new_registration_path(resource_name), class: 'ui primary button' %>
+        <!-- <%= link_to 'Sign up', new_registration_path(resource_name), class: 'ui primary button' %> -->
+        <button class="ui primary beta button">Sign up</button>
       </div>
     </div>
   </div>
@@ -23,10 +24,14 @@
       <div class="sub header">All of Your Orders in One Place</div>
     </h1>
     <h2>Simplify your order management by consolidating orders from multiple ordering services into one single hub.</h2>
-    <%= link_to new_registration_path(resource_name), class: 'ui huge primary right labeled icon button' do %>
-    <i class="right arrow icon"></i>
+    <!-- <%= link_to new_registration_path(resource_name), class: 'ui huge primary right labeled icon button' do %>
+      <i class="right arrow icon"></i>
       Get Started
-    <% end %>
+    <% end %> -->
+    <button class="ui huge primary right labeled icon beta button">
+      <i class="right arrow icon"></i>
+      Get Started
+    </button>
   </div>
 </div>
 
@@ -35,9 +40,9 @@
     <div class="row">
       <div class="eight wide column">
         <h3 class="ui header">What is OrdrHub?</h3>
-        <p>OrdrHub is a single application to manage all of your incoming orders across multiple ordering services. Simplify your staff's workflow today by using our intuitive platform that can be run on any existing device with access to a web browser.</p>
-        <h3 class="ui header">Why OrdrHub?</h3>
-        <p>Online ordering services are great for your business, but currently they each often require their own equipment causing incoming orders to be difficult to maintain. OrdrHub aggregates all of these orders into a simple-to-use platform so that you're spending your time efficiently.</p>
+        <p>OrdrHub is a single application to manage all of your incoming orders across multiple ordering services. Simplify your staff's workflow today by using our intuitive platform that can run on any existing device with access to a web browser.</p>
+        <h3 class="ui header">Why use OrdrHub?</h3>
+        <p>Online ordering services are great for your business, but currently they each often require their own equipment causing incoming orders to be scattered and difficult to maintain. OrdrHub aggregates all of these orders into a simple-to-use platform so that you're spending your time efficiently.</p>
       </div>
       <div class="six wide right floated column">
         <%= image_tag 'ipad.png', class: 'ui big image' %>
@@ -45,7 +50,7 @@
     </div>
     <div class="row">
       <div class="center aligned column">
-        <a class="ui huge primary button">Set Up Now</a>
+        <button class="ui huge primary beta button">Set Up Now</button>
       </div>
     </div>
   </div>
@@ -76,11 +81,145 @@
   <div class="ui text container">
     <h3 class="ui header">Can OrdrHub Handle My Business Needs?</h3>
     <p>Whether your business is one-of-a-kind or you're operating a nationwide chain, OrdrHub scales to your needs to effectively manage incoming orders for your store or organization.</p>
-    <a class="ui large primary button">Prove It...</a>
+    <button class="ui large primary beta button">Prove It...</button>
     <h4 class="ui horizontal header divider">
       <a href="#">Pricing Plans</a>
     </h4>
     <h3 class="ui header">Pricing That Just Makes Sense</h3>
     <p>We understand that you're business operates on low margins and we've come up with straight forward pricing options that are as lean as possible to help you improve your bottom line.</p>
+    <div class="ui centered special cards">
+      <div class="card">
+        <div class="blurring dimmable pricing-option">
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <button class="ui primary right labeled icon beta button">
+                  <i class="right arrow icon"></i>
+                  Go Basic
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="pricing-option ui teal inverted segment border-bottom-radius-0 m0 p0">
+            <h2 class="ui icon huge header">
+              <i class="circular cloud icon"></i>
+              <div class="content">
+                <small>$</small>0.19
+              </div>
+            </h2>
+          </div>
+        </div>
+        <div class="content">
+          <a class="header">Basic Plan</a>
+          <div class="meta">
+            <span class="date">*Price per Order Processed</span>
+          </div>
+        </div>
+        <div class="extra content">
+          <div>
+            <i class="green check circle outline icon"></i>
+             Order Management Hub
+          </div>
+          <div>
+            <i class="green check circle outline icon"></i>
+             Unlimited Organizations
+          </div>
+          <div>
+            <i class="green check circle outline icon"></i>
+             Unlimited Stores
+          </div>
+          <div>
+            <i class="green check circle outline icon"></i>
+             Unlimited Users
+          </div>
+          <div>
+            <i class="red remove circle outline icon"></i>
+             POS Integration
+          </div>
+        </div>
+      </div>
+
+      <div class="card float-container">
+        <div class="ui yellow right corner label">
+          <i class="star icon"></i>
+        </div>
+        <div class="blurring dimmable pricing-option">
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <button class="ui primary right labeled icon beta button">
+                  <i class="right arrow icon"></i>
+                  Go Premier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="pricing-option ui blue inverted segment border-bottom-radius-0 m0 p0">
+            <h2 class="ui icon huge header">
+              <i class="circular rocket icon"></i>
+              <div class="content">
+                <small>$</small>0.49
+              </div>
+            </h2>
+          </div>
+        </div>
+        <div class="content">
+          <a class="header">Premier Plan</a>
+          <div class="meta">
+            <!-- <span class="date">*Price per Order Processed</span> -->
+            <div class="ui orange label">Coming Soon!</div>
+          </div>
+        </div>
+        <div class="extra content">
+          <div>
+            <i class="green check circle outline icon"></i>
+             Order Management Hub
+          </div>
+          <div>
+            <i class="green check circle outline icon"></i>
+             Unlimited Organizations
+          </div>
+          <div>
+            <i class="green check circle outline icon"></i>
+             Unlimited Stores
+          </div>
+          <div>
+            <i class="green check circle outline icon"></i>
+             Unlimited Users
+          </div>
+          <div>
+            <i class="green check circle outline icon"></i>
+             POS Integration
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui beta modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Become a Beta User
+  </div>
+  <div class="content">
+    <div class="ui form">
+      <h4 class="ui header">Interested in helping us make OrdrHub a viable product?</h4>
+      <p>Submit the form below with your email and details about your business's needs if you would like us to reach out to you. If selected, we'll get you on the platform ASAP to effectively manage your incoming orders!</p>
+      <%= simple_form_for(@lead) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :email %>
+        <div class="field">
+          <label for="beta_body">How can OrdrHub help you?</label>
+          <%= text_area_tag 'beta_body' %>
+        </div>
+        <div class="actions">
+          <%= f.button :submit, class: 'ui positive right labeled icon button' do %>
+            Submit
+            <i class="checkmark icon"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

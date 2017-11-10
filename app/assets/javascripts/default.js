@@ -7,8 +7,16 @@ $(document).on('turbolinks:load', function(){
   // Initialize accordions
   $('.ui.accordion').accordion();
 
+  // Initialize modals
+  $('.ui.modal').modal();
+
   // Initialize select inputs
   $('select').dropdown();
+
+  // Initialize special cards
+  $('.special.cards .pricing-option').dimmer({
+    on: 'hover'
+  });
 
   // Tooltips
   $('[data-content], [data-title]').popup();

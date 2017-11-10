@@ -5,3 +5,16 @@
     border: 0 !important;
   }
 }
+
+.pricing-option {
+  > .pricing-option {
+    height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .content {
+      font-size: 2em;
+      margin-top: 0.35em;
+    }
+  }
+}

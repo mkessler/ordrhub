@@ -40,6 +40,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Fake data
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -83,3 +84,4 @@ gem 'newrelic_rpm'
 gem 'scout_apm'
 
 gem 'rest-client'
+gem "recaptcha", require: "recaptcha/rails"

@@ -16,6 +16,7 @@
     </div>
   </div>
   <div class="ui text container">
+    <%= render partial: 'shared/flash_messages' %>
     <div class="ui small image mt3">
       <%= image_tag('logo/inverted-logo.png') %>
     </div>
@@ -85,7 +86,7 @@
     <h4 class="ui horizontal header divider">
       <a href="#">Pricing Plans</a>
     </h4>
-    <h3 class="ui header">Pricing That Just Makes Sense</h3>
+    <h3 class="ui header">Pricing That Makes Sense</h3>
     <p>We understand that you're business operates on low margins and we've come up with straight forward pricing options that are as lean as possible to help you improve your bottom line.</p>
     <div class="ui centered special cards">
       <div class="card">
@@ -209,17 +210,28 @@
       <%= simple_form_for(@lead) do |f| %>
         <%= f.error_notification %>
         <%= f.input :email %>
+        <div class="field mb0">
+          <label>Which ordering services are your business currently using?</label>
+        </div>
+        <div class="ui segment mt0">
+          <%= f.input :grubhub, label: 'GrubHub', wrapper: :ui_checkbox %>
+          <%= f.input :yelp, label: 'Eat24', wrapper: :ui_checkbox %>
+          <%= f.input :chownow, label: 'ChowNow', wrapper: :ui_checkbox %>
+          <%= f.input :doordash, label: 'DoorDash', wrapper: :ui_checkbox %>
+        </div>
         <div class="field">
-          <label for="beta_body">How can OrdrHub help you?</label>
-          <%= text_area_tag 'beta_body' %>
+          <label for="beta_body">Any other details you would like to share on how OrdrHub can help you?</label>
+          <%= text_area_tag 'beta_body', nil, rows: 3, placeholder: 'Optional: If you\'re using an ordering service not listed above include it here as well as any POS software you will need to integrate with.'  %>
         </div>
-        <div class="actions">
-          <%= f.button :submit, class: 'ui positive right labeled icon button' do %>
-            Submit
-            <i class="checkmark icon"></i>
-          <% end %>
-        </div>
+        <%= recaptcha_tags %>
       <% end %>
+      <div class="ui error message"></div>
     </div>
+  </div>
+  <div class="actions">
+    <button class="ui positive right labeled icon beta_submit button" type="submit">
+      Request Access
+      <i class="checkmark icon"></i>
+    </button>
   </div>
 </div>

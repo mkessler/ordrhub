@@ -27,11 +27,11 @@ class LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
 
     respond_to do |format|
-      if @lead.save
-        format.html { redirect_to controller: :marketing, action: :index, notice: 'Thank you for your interest! We\'ll be in contact shortly.' }
+      if verify_recaptcha(model: @lead) && @lead.save
+        format.html { redirect_to root_url, notice: 'Thank you for your interest! We\'ll review your request shortly.' }
         format.json { render :show, status: :created, location: @lead }
       else
-        format.html { redirect_to controller: :marketing, action: :index, notice: 'Thank you for your interest! We\'ll be in contact shortly.' }
+        format.html { redirect_to root_url, alert: 'Uh-oh, it looks like you\'re either a robot or have already a submitted a request using that email. We still may be reviewing your request and we\'ll let you know when you\'re able to access OrdrHub as soon as possible!' }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +69,6 @@ class LeadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lead_params
-      params.require(:lead).permit(:email)
+      params.require(:lead).permit(:email, :grubhub, :yelp, :chownow, :doordash)
     end
 end

@@ -8,7 +8,11 @@ $(document).on('turbolinks:load', function(){
   $('.ui.accordion').accordion();
 
   // Initialize modals
-  $('.ui.modal').modal();
+  $('.ui.modal').modal({
+    onApprove: function () {
+      return false
+    }
+  });
 
   // Initialize select inputs
   $('select').dropdown();

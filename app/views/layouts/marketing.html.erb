@@ -110,6 +110,22 @@
         $('.ui.sidebar').sidebar('attach events', '.toc.item');
 
         $('.beta.modal').modal('attach events', '.beta.button', 'show');
+        $('.ui.form.new_lead').form({
+          fields: {
+            name: {
+              identifier: 'lead_email',
+              rules: [
+                {
+                  type   : 'email',
+                  prompt : 'Valid email required'
+                }
+              ]
+            }
+          }
+        });
+        $('.beta_submit').on('click', function(){
+          $('#new_lead').submit();
+        });
       });
     </script>
   </head>

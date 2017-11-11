@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :leads
   devise_for :users
 
+  resources :leads, only: [:create]
   resources :organizations
   resources :stores do
     post :incoming_order, on: :collection

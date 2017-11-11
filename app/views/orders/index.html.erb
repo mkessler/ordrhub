@@ -45,7 +45,7 @@
         <%= image_tag("sources/logos/#{order.source.name.downcase}.png", class: "ui centered middle aligned image", style: "width: 140px !important;") %>
       </div>
       <div class="content">
-        <%= link_to "Order ##{order.details['reference']}", store_order_path(@store, order, page: params[:page]), class: "header" %>
+        <%= link_to "Order ##{order.number}", store_order_path(@store, order, page: params[:page]), class: "header" %>
         <div class="meta">
           <span class="cinema">
             <%= "#{order.details['date']} #{'•' if order.details['time'].present? } #{order.details['time']}" %>

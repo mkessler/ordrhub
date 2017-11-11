@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function(){
   // Initialize modals
   $('.ui.modal').modal({
     onApprove: function () {
-      return false
+      return false;
     }
   });
 

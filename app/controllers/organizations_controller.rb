@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
+    set_meta_tags title: 'Organizations'
     @organizations = current_user.organizations
   end
 
@@ -13,6 +14,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     semantic_breadcrumb @organization.name, organization_path(@organization)
+    set_meta_tags title: @organization.name
     @stores_count = @organization.stores.count
     @users_count = @organization.users.count
   end
@@ -20,6 +22,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     semantic_breadcrumb 'New Organization', :new_organization_path
+    set_meta_tags title: 'New Organization'
     @organization = Organization.new
   end
 
@@ -27,6 +30,7 @@ class OrganizationsController < ApplicationController
   def edit
     semantic_breadcrumb @organization.name, organization_path(@organization)
     semantic_breadcrumb 'Edit', edit_organization_path(@organization)
+    set_meta_tags title: "Edit #{@organization.name}"
   end
 
   # POST /organizations

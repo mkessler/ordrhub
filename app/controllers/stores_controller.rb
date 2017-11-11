@@ -10,6 +10,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
+    set_meta_tags title: 'Stores'
     @stores = Kaminari.paginate_array(current_user.all_stores).page(params[:page]).per(25)
   end
 
@@ -17,6 +18,7 @@ class StoresController < ApplicationController
   # GET /stores/1.json
   def show
     semantic_breadcrumb @store.name, store_path(@store)
+    set_meta_tags title: @store.name
     @orders_count = @store.orders.count
     @users_count = @store.users_count
   end
@@ -24,6 +26,7 @@ class StoresController < ApplicationController
   # GET /stores/new
   def new
     semantic_breadcrumb 'Add Store', :new_store_path
+    set_meta_tags title: 'Add Store'
     @store = Store.new
   end
 
@@ -31,6 +34,7 @@ class StoresController < ApplicationController
   def edit
     semantic_breadcrumb @store.name, store_path(@store)
     semantic_breadcrumb 'Edit', edit_store_path(@store)
+    set_meta_tags title: "Edit #{@store.name}"
   end
 
   # POST /stores

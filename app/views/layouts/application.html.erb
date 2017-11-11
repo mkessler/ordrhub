@@ -2,9 +2,8 @@
 <html>
   <head>
     <%= render partial: 'layouts/google_analytics' %>
-    <title>OrdrHub</title>
+    <%= display_meta_tags %>
     <%= csrf_meta_tags %>
-    <%= render partial: 'layouts/favicons' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

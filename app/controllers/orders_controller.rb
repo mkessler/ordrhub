@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
   def index
     semantic_breadcrumb @store.name, store_path(@store)
     semantic_breadcrumb 'Orders', store_orders_path(@store)
+    set_meta_tags title: 'Orders'
+
     if params[:search]
       @orders = @store.orders.search(params['search']).order(:created_at).page params[:page]
       @show_view_all_button = true
@@ -28,7 +30,8 @@ class OrdersController < ApplicationController
   def show
     semantic_breadcrumb @store.name, store_path(@store)
     semantic_breadcrumb 'Orders', store_orders_path(@store)
-    semantic_breadcrumb "##{@order.details['reference']}", store_order_path(@store, @order)
+    semantic_breadcrumb "##{@order.number}", store_order_path(@store, @order)
+    set_meta_tags title: "Order ##{@order.number}"
   end
 
   # GET /orders/new

@@ -87,3 +87,4 @@ gem 'rest-client'
 gem "recaptcha", require: "recaptcha/rails"
 
 gem 'mailgun-ruby', '~>1.1.6'
+gem 'meta-tags'

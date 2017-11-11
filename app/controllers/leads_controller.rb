@@ -28,6 +28,16 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if verify_recaptcha(model: @lead) && @lead.save
+        mg_client = Mailgun::Client.new
+        message = {
+          :from => @lead.email,
+          :to => 'ordrhub@gmail.com',
+          :subject => "New Lead (ID: #{@lead.id})",
+          :text => params['beta_body']
+        }
+
+        mg_client.send_message 'mg.ordrhub.com', message
+
         format.html { redirect_to root_url, notice: 'Thank you for your interest! We\'ll review your request shortly.' }
         format.json { render :show, status: :created, location: @lead }
       else

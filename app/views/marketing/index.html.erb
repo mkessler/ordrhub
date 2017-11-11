@@ -17,7 +17,7 @@
   </div>
   <div class="ui text container">
     <%= render partial: 'shared/flash_messages' %>
-    <div class="ui small image mt3">
+    <div class="ui small shrink image mt3">
       <%= image_tag('logo/inverted-logo.png') %>
     </div>
     <h1 class="ui inverted header">
@@ -63,14 +63,14 @@
       <div class="column">
         <h3>"Tracking down orders from each service was such a hassle until we found OrdrHub!"</h3>
         <p>
-          <img src="https://semantic-ui.com/images/avatar/small/jenny.jpg" class="ui avatar image">
+          <%= image_tag 'avatars/jenny.jpg', class: 'ui avatar image' %>
           Annette P.
         </p>
       </div>
       <div class="column">
         <h3>"An absolute necessity to effectively manage online ordering in today's landscape."</h3>
         <p>
-          <img src="https://semantic-ui.com/images/avatar/small/matt.jpg" class="ui avatar image">
+          <%= image_tag 'avatars/matt.jpg', class: 'ui avatar image' %>
           Kevin R.
         </p>
       </div>

@@ -85,3 +85,5 @@ gem 'scout_apm'
 
 gem 'rest-client'
 gem "recaptcha", require: "recaptcha/rails"
+
+gem 'mailgun-ruby', '~>1.1.6'

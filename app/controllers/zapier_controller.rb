@@ -3,7 +3,7 @@ class ZapierController < ApplicationController
   include ZapierHelper
 
   def incoming_grubhub_order
-    if store = Store.find_by_email(params['sender'])
+    if store = Store.find_by_email(params['zapier']['Sender'])
       email = Nokogiri::HTML(params['zapier']['HtmlDocument'])
       confirmation_link = order_confirmation_link(
         email,

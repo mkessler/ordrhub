@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
         @show_view_all_button = false
       end
     else
-      @orders = @store.orders.order(:created_at).page params[:page]
+      @orders = @store.orders.recent.page params[:page]
     end
   end
 

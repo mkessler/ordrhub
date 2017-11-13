@@ -28,15 +28,13 @@ class ZapierController < ApplicationController
         })
       end
 
-      respond_to do |format|
-        if order.save
-          format.json { render json: { created: true }, status: :created }
-        else
-          format.json { render json: order.errors, status: :unprocessable_entity }
-        end
+      if order.save
+        render json: { created: true }, status: :created
+      else
+        render json: order.errors, status: :unprocessable_entity
       end
     else
-      format.json { render json: { store: false }, status: :unprocessable_entity }
+      render json: { store: false }, status: :unprocessable_entity
     end
   end
 end

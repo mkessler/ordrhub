@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   belongs_to :source
 
   validates :store_id, :source_id, presence: true
+  validates :number, presence: true, uniqueness: { scope: [:store_id, :source_id] }
 
   default_scope { order(created_at: :desc) }
 

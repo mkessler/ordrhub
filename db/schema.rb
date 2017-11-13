@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110231728) do
+ActiveRecord::Schema.define(version: 20171113063044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(version: 20171110231728) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.hstore   "details",      default: {}
-    t.string   "number"
+    t.string   "number",                    null: false
     t.string   "name"
     t.string   "phone_number"
+    t.index ["number", "store_id", "source_id"], name: "index_orders_on_number_and_store_id_and_source_id", unique: true, using: :btree
     t.index ["source_id"], name: "index_orders_on_source_id", using: :btree
     t.index ["store_id"], name: "index_orders_on_store_id", using: :btree
   end

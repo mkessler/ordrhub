@@ -15,12 +15,13 @@ Organization.create(name: 'Jersey Mike\'s')
 50.times do
   Store.create(
     organization: Organization.first,
-    name: "Store ##{Faker::Number.number(5)}"
+    name: "Store ##{Faker::Number.number(5)}",
+    email: "store#{Faker::Number.number(3)}@example.com"
   )
 end
 
-Store.create(name: 'Good Food on Montford')
-Store.create(name: 'ROCKSALT')
+Store.create(name: 'Good Food on Montford', email: 'store1@example.com')
+Store.create(name: 'ROCKSALT', email: 'store2@example.com')
 
 User.create(
   email: 'user1@example.com',
@@ -66,13 +67,17 @@ Store.all.each do |store|
     # tip = (total * 0.18).round(2)
     # subtotal = (total + fee + tax + tip).round(2)
     # received = Faker::Time.between(DateTime.now, DateTime.now + 30)
+    number = Faker::Number.number(15)
 
     Order.create(
       source: Source.all.sample,
       store: store,
+      number: number,
+      name: "Matt Baczor",
+      phone_number: "(734) 620-3305",
       details: {
         grandTotal: "$19.24",
-        reference: "431802214361616",
+        reference: number,
         dropoffZip: "80205",
         dropoffPhone: "(734) 620-3305",
         tax: "$1.24",

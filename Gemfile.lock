@@ -194,6 +194,8 @@ GEM
     scout_apm (2.3.1)
     semantic-ui-sass (2.2.12.1)
       sass (>= 3.2)
+    sentry-raven (2.7.1)
+      faraday (>= 0.7.6, < 1.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -263,6 +265,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   scout_apm
   semantic-ui-sass
+  sentry-raven
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

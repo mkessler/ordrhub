@@ -82,6 +82,7 @@ gem 'pg_search'
 # Monitoring
 gem 'newrelic_rpm'
 gem 'scout_apm'
+gem 'sentry-raven'
 
 gem 'rest-client'
 gem "recaptcha", require: "recaptcha/rails"

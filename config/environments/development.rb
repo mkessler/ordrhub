@@ -18,7 +18,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => 'public, max-age=172800'
+      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -30,24 +30,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
-
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   :authentication => :plain,
-  #   :address => Rails.application.secrets.mailgun_address,
-  #   :port => Rails.application.secrets.mailgun_port,
-  #   :domain => Rails.application.secrets.mailgun_domain,
-  #   :user_name => Rails.application.secrets.mailgun_username,
-  #   :password => Rails.application.secrets.mailgun_password
-  # }
-
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAILGUN_API_KEY'],
-    domain: ENV['MAILGUN_DOMAIN'],
-  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

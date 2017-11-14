@@ -16,90 +16,90 @@ ActiveRecord::Schema.define(version: 20171113063044) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "associations", force: :cascade do |t|
-    t.integer  "store_id",   null: false
-    t.integer  "user_id",    null: false
+  create_table "associations", id: :serial, force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["store_id", "user_id"], name: "index_associations_on_store_id_and_user_id", unique: true, using: :btree
-    t.index ["store_id"], name: "index_associations_on_store_id", using: :btree
-    t.index ["user_id"], name: "index_associations_on_user_id", using: :btree
+    t.index ["store_id", "user_id"], name: "index_associations_on_store_id_and_user_id", unique: true
+    t.index ["store_id"], name: "index_associations_on_store_id"
+    t.index ["user_id"], name: "index_associations_on_user_id"
   end
 
-  create_table "leads", force: :cascade do |t|
-    t.string   "email",                      null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "grubhub",    default: false, null: false
-    t.boolean  "yelp",       default: false, null: false
-    t.boolean  "doordash",   default: false, null: false
-    t.boolean  "chownow",    default: false, null: false
-    t.index ["email"], name: "index_leads_on_email", unique: true, using: :btree
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.integer  "organization_id", null: false
-    t.integer  "user_id",         null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["organization_id", "user_id"], name: "index_memberships_on_organization_id_and_user_id", unique: true, using: :btree
-    t.index ["organization_id"], name: "index_memberships_on_organization_id", using: :btree
-    t.index ["user_id"], name: "index_memberships_on_user_id", using: :btree
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer  "store_id",                  null: false
-    t.integer  "source_id",                 null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.hstore   "details",      default: {}
-    t.string   "number",                    null: false
-    t.string   "name"
-    t.string   "phone_number"
-    t.index ["number", "store_id", "source_id"], name: "index_orders_on_number_and_store_id_and_source_id", unique: true, using: :btree
-    t.index ["source_id"], name: "index_orders_on_source_id", using: :btree
-    t.index ["store_id"], name: "index_orders_on_store_id", using: :btree
-  end
-
-  create_table "organizations", force: :cascade do |t|
-    t.string   "name",       null: false
+  create_table "leads", id: :serial, force: :cascade do |t|
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "grubhub", default: false, null: false
+    t.boolean "yelp", default: false, null: false
+    t.boolean "doordash", default: false, null: false
+    t.boolean "chownow", default: false, null: false
+    t.index ["email"], name: "index_leads_on_email", unique: true
   end
 
-  create_table "sources", force: :cascade do |t|
-    t.string   "name",       null: false
+  create_table "memberships", id: :serial, force: :cascade do |t|
+    t.integer "organization_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id", "user_id"], name: "index_memberships_on_organization_id_and_user_id", unique: true
+    t.index ["organization_id"], name: "index_memberships_on_organization_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "orders", id: :serial, force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.integer "source_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.hstore "details", default: {}
+    t.string "number", null: false
+    t.string "name"
+    t.string "phone_number"
+    t.index ["number", "store_id", "source_id"], name: "index_orders_on_number_and_store_id_and_source_id", unique: true
+    t.index ["source_id"], name: "index_orders_on_source_id"
+    t.index ["store_id"], name: "index_orders_on_store_id"
+  end
+
+  create_table "organizations", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stores", force: :cascade do |t|
-    t.integer  "organization_id"
-    t.string   "name",            null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "email",           null: false
-    t.index ["email"], name: "index_stores_on_email", unique: true, using: :btree
-    t.index ["organization_id"], name: "index_stores_on_organization_id", using: :btree
+  create_table "sources", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "stores", id: :serial, force: :cascade do |t|
+    t.integer "organization_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", null: false
+    t.index ["email"], name: "index_stores_on_email", unique: true
+    t.index ["organization_id"], name: "index_stores_on_organization_id"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "associations", "stores"

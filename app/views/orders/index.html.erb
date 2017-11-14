@@ -38,35 +38,44 @@
   </div>
 </div>
 
-<div class="ui segment divided items">
-  <% @orders.each do |order| %>
-    <div class="item">
-      <div class="image">
-        <%= image_tag("sources/logos/#{order.source.name.downcase}.png", class: "ui centered middle aligned image", style: "width: 140px !important;") %>
+<div class="ui segment <%= 'divided items orders' if @orders.any? %>">
+  <div class="ui top attached primary label">
+    Viewing Orders Received In Last 24hrs
+  </div>
+  <% if @orders.any? %>
+    <% @orders.each do |order| %>
+      <div class="item">
+        <div class="image">
+          <%= image_tag("sources/logos/#{order.source.name.downcase}.png", class: "ui centered middle aligned image", style: "width: 140px !important;") %>
+        </div>
+        <div class="content">
+          <%= link_to "Order ##{order.number}", store_order_path(@store, order, page: params[:page]), class: "header" %>
+          <div class="meta">
+            <span class="cinema">
+              <%= "#{order.details['date']} #{'•' if order.details['time'].present? } #{order.details['time']}" %>
+            </span>
+          </div>
+          <div class="description">
+            <p>
+              Items: <%= order_items_count(order) %> | Subtotal: <%= order.details['grandTotal'] %>
+            </p>
+          </div>
+          <div class="extra">
+            <%= link_to order.details['confirmation_link'], class: "ui left floated right labeled icon positive button", target: "_blank" do %>
+              <i class="right checkmark icon"></i>
+              Confirm
+            <% end %>
+            <%= link_to store_order_path(@store, order, page: params[:page]), class: "ui right floated right labeled icon button" do %>
+              <i class="right arrow icon"></i>
+              View
+            <% end %>
+          </div>
+        </div>
       </div>
-      <div class="content">
-        <%= link_to "Order ##{order.number}", store_order_path(@store, order, page: params[:page]), class: "header" %>
-        <div class="meta">
-          <span class="cinema">
-            <%= "#{order.details['date']} #{'•' if order.details['time'].present? } #{order.details['time']}" %>
-          </span>
-        </div>
-        <div class="description">
-          <p>
-            Items: <%= order_items_count(order) %> | Subtotal: <%= order.details['grandTotal'] %>
-          </p>
-        </div>
-        <div class="extra">
-          <%= link_to order.details['confirmation_link'], class: "ui left floated right labeled icon positive button", target: "_blank" do %>
-            <i class="right checkmark icon"></i>
-            Confirm
-          <% end %>
-          <%= link_to store_order_path(@store, order, page: params[:page]), class: "ui right floated right labeled icon button" do %>
-            <i class="right arrow icon"></i>
-            View
-          <% end %>
-        </div>
-      </div>
+    <% end %>
+  <% else %>
+    <div class="ui red message text-center">
+      <i class="large history icon mr0"></i> No orders received in the last 24 hours.
     </div>
   <% end %>
 </div>

@@ -1,9 +1,10 @@
-# README
+# OrdrHub
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Local development
+- Start Rails Server by running `rails s`
+- Start Webpack server by running `bin/webpack-dev-server`
 
-Things you may want to cover:
+
 
 * Ruby version
 
@@ -20,6 +21,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
-# My project's README
